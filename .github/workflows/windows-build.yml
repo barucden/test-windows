@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2025
 
     steps:
       - uses: actions/checkout@v6
@@ -24,9 +24,15 @@ jobs:
           cmake -S thirdparty/ort/ -B thirdparty/ort/build/
           cmake --build thirdparty/ort/build
 
+      - name: Download OpenCV
+        run: |
+          curl -L -o opencv.zip https://github.com/opencv/opencv/releases/download/4.13.0/opencv-4.13.0-windows.exe
+          7z x opencv.zip -oopencv
+
       - name: Configure
         run: |
           cmake -S . -B build -G Ninja \
+            -DOpenCV_DIR="opencv\opencv\build"
             -DCMAKE_BUILD_TYPE=Release \
             -DPROJECT_VERSION=${{ github.ref_name }}
 
