@@ -18,11 +18,11 @@ jobs:
           path: thirdparty/ort/install
           key: ${{ runner.os }}-ort-${{ hashFiles('thirdparty/ort/CMakeLists.txt', 'thirtparty/ort/patches/*') }}
 
-      - name: Build ORT
-        if: steps.cache-ort.outputs.cache-hit != 'true'
-        run: |
-          cmake -S thirdparty/ort/ -B thirdparty/ort/build/
-          cmake --build thirdparty/ort/build
+#      - name: Build ORT
+#        if: steps.cache-ort.outputs.cache-hit != 'true'
+#        run: |
+#          cmake -S thirdparty/ort/ -B thirdparty/ort/build/
+#          cmake --build thirdparty/ort/build
 
       - name: Download OpenCV
         run: |
@@ -30,9 +30,9 @@ jobs:
           7z x opencv.zip -oopencv
 
       - name: Configure
-        run: |
-          cmake -S . -B build -G Ninja \
-            -DPROJECT_VERSION=${{ github.ref_name }} \
+        run: >
+          cmake -S . -B build -G Ninja
+            -D PROJECT_VERSION=${{ github.ref_name }}
             -D OpenCV_DIR=opencv/opencv/build
 
       - name: Build
