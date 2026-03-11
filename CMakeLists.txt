@@ -50,7 +50,7 @@ FetchContent_MakeAvailable(plog)
 find_package(OpenCV REQUIRED)
 
 find_package(onnxruntime CONFIG REQUIRED
-    PATHS "${CMAKE_CURRENT_LIST_DIR}/thirdparty/ort"
+    PATHS "${CMAKE_CURRENT_LIST_DIR}/thirdparty/ort/install"
     NO_DEFAULT_PATH
 )
 
