@@ -30,10 +30,7 @@ jobs:
           7z x opencv.zip -oopencv
 
       - name: Configure
-        run: >
-          cmake -S . -B build -G Ninja
-            -D PROJECT_VERSION=${{ github.ref_name }}
-            -D OpenCV_DIR=opencv/opencv/build
+        run: cmake -S . -B build -G Ninja -D PROJECT_VERSION=${{ github.ref_name }} -D OpenCV_DIR=opencv/opencv/build
 
       - name: Build
         run: cmake --build build --config Release
