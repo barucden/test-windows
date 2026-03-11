@@ -32,9 +32,9 @@ jobs:
       - name: Configure
         run: |
           cmake -S . -B build -G Ninja \
-            -DOpenCV_DIR="opencv\opencv\build"
             -DCMAKE_BUILD_TYPE=Release \
-            -DPROJECT_VERSION=${{ github.ref_name }}
+            -DPROJECT_VERSION=${{ github.ref_name }} \
+            -D OpenCV_DIR=opencv/opencv/build
 
       - name: Build
         run: cmake --build build --config Release
