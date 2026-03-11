@@ -19,11 +19,11 @@ jobs:
           path: thirdparty/ort/install
           key: ${{ runner.os }}-ort-${{ hashFiles('thirdparty/ort/CMakeLists.txt', 'thirtparty/ort/patches/*') }}
 
-#      - name: Build ORT
-#        if: steps.cache-ort.outputs.cache-hit != 'true'
-#        run: |
-#          cmake -S thirdparty/ort/ -B thirdparty/ort/build/
-#          cmake --build thirdparty/ort/build
+      - name: Build ORT
+        if: steps.cache-ort.outputs.cache-hit != 'true'
+        run: |
+          cmake -S thirdparty/ort/ -B thirdparty/ort/build/
+          cmake --build thirdparty/ort/build
 
       - name: Download OpenCV
         run: |
@@ -33,20 +33,20 @@ jobs:
       - name: Configure
         run: cmake -S . -B build -G Ninja -D PROJECT_VERSION=${{ github.ref_name }} -D OpenCV_DIR=opencv/opencv/build
 
-      - name: Build
-        run: cmake --build build --config Release
-
-      - name: Install
-        run: cmake --install build --config Release --prefix build/install
-
-      - name: Package
-        run: |
-          cd build
-          cpack -C Release
-
-      - name: Upload built artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-build
-          path: build/install
+#      - name: Build
+#        run: cmake --build build --config Release
+#
+#      - name: Install
+#        run: cmake --install build --config Release --prefix build/install
+#
+#      - name: Package
+#        run: |
+#          cd build
+#          cpack -C Release
+#
+#      - name: Upload built artifacts
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: windows-build
+#          path: build/install
 
