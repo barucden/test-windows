@@ -4,12 +4,15 @@
 #include <opencv2/core.hpp>
 #include <plog/Initializers/RollingFileInitializer.h>
 #include <plog/Log.h>
+#include <wx/init.h>
 #include <wx/utils.h>
 
 #include <windows.h>
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow) {
     plog::init(plog::debug, "Hello.txt");
+
+    wxInitialize();
 
     std::cout << "ONNX Runtime version: " << Ort::GetVersionString() << std::endl;
 
