@@ -14,12 +14,12 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
     wxInitialize();
 
-    std::cout << "ONNX Runtime version: " << Ort::GetVersionString() << std::endl;
+    PLOGI << "ONNX Runtime version: " << Ort::GetVersionString() << std::endl;
 
     const auto wxVersion = wxGetLibraryVersionInfo();
-    std::cout << "wxWidgets version: " << wxVersion.GetVersionString() << std::endl;
+    PLOGI << "wxWidgets version: " << wxVersion.GetVersionString() << std::endl;
 
-    std::cout << "OpenCV version: " << CV_VERSION << std::endl;
+    PLOGI << "OpenCV version: " << CV_VERSION << std::endl;
 
     return 0;
 }
