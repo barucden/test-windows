@@ -9,17 +9,18 @@
 
 #include <windows.h>
 
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow) {
+int main(int args, char **argv) {
     plog::init(plog::debug, "Hello.txt");
 
     wxInitialize();
 
+    std::cout << "ONNX Runtime version: " << Ort::GetVersionString() << std::endl;
     PLOGI << "ONNX Runtime version: " << Ort::GetVersionString() << std::endl;
 
     const auto wxVersion = wxGetLibraryVersionInfo();
-    PLOGI << "wxWidgets version: " << wxVersion.GetVersionString() << std::endl;
+    std::cout << "wxWidgets version: " << wxVersion.GetVersionString() << std::endl;
 
-    PLOGI << "OpenCV version: " << CV_VERSION << std::endl;
+    std::cout << "OpenCV version: " << CV_VERSION << std::endl;
 
     return 0;
 }

@@ -59,7 +59,8 @@ set(SOURCES
 )
 
 if (WIN32)
-    add_executable(main WIN32 ${SOURCES})
+    #add_executable(main WIN32 ${SOURCES})
+    add_executable(main ${SOURCES})
 else()
     add_executable(main ${SOURCES})
 endif()
