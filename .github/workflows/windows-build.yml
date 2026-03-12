@@ -50,10 +50,11 @@ jobs:
           cd build
           cpack -C Release
 
-#
-#      - name: Upload built artifacts
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: windows-build
-#          path: build/install
+      - name: Upload built artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: |
+            build/install
+            build/*.exe
 
