@@ -6,7 +6,7 @@
 #include <plog/Log.h>
 #include <wx/utils.h>
 
-int main(int args, char **argv) {
+int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow) {
     plog::init(plog::debug, "Hello.txt");
 
     std::cout << "ONNX Runtime version: " << Ort::GetVersionString() << std::endl;
