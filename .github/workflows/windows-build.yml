@@ -40,7 +40,7 @@ jobs:
         run: cmake --install build --config Release --prefix build/install
 
       - name: Test
-        run: build/install/main.exe
+        run: build/install/bin/main.exe
 
       - name: Package
         run: |
